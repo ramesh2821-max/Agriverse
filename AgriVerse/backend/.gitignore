@@ -1,0 +1,7 @@
+node_modules
+.env
+uploads/payments/*
+!uploads/payments/.gitkeep
+uploads/samples/*
+!uploads/samples/.gitkeep
+.DS_Store

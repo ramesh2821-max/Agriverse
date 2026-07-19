@@ -1,0 +1,181 @@
+/* Reset native button styling for cards implemented as <button> elements */
+button.option-card,
+button.quality-card,
+button.sample-tile {
+  all: unset;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  position: relative;
+}
+button.option-card:disabled,
+button.quality-card:disabled { cursor: not-allowed; opacity: 0.55; }
+
+/* Category dropdown tiles / homepage category grid */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.category-tile {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.category-tile:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.category-tile img { width: 100%; height: 100%; object-fit: cover; }
+.category-tile-label {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 18px;
+  background: linear-gradient(0deg, rgba(43,36,32,0.88) 0%, transparent 100%);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+/* Option cards (variety / age) */
+.option-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 22px;
+  max-width: 720px;
+}
+.option-card {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-line);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  text-align: left;
+}
+.option-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.option-card-img { aspect-ratio: 16/10; overflow: hidden; }
+.option-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.option-card-body { padding: 16px 18px 20px; }
+.option-card-body h3 { margin: 0; font-size: 1.15rem; }
+
+/* Quality product cards - styled like a hanging burlap sack tag */
+.quality-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 22px;
+}
+.quality-card {
+  background: var(--color-white);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-line);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.quality-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); }
+.quality-card-img { aspect-ratio: 1/1; overflow: hidden; position: relative; }
+.quality-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.quality-card-quality-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--color-grain);
+  color: var(--color-sack-dark);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.quality-card-body {
+  padding: 16px 18px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.quality-card-body h3 { font-size: 1.1rem; margin-bottom: 12px; }
+.quality-card-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px dashed var(--color-line);
+  font-family: var(--font-mono);
+}
+.quality-card-stats .stock { font-size: 0.8rem; color: var(--color-leaf-dark); }
+.quality-card-stats .price { font-size: 1.05rem; font-weight: 600; color: var(--color-sack-dark); }
+.quality-card-stats .price small { font-weight: 400; font-size: 0.7rem; color: var(--color-sack); }
+.out-of-stock-note { font-size: 0.72rem; color: var(--color-clay); font-family: var(--font-mono); margin-top: 4px; }
+
+/* Sample gallery */
+.sample-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+  margin-bottom: 32px;
+}
+.sample-tile {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  border: 3px solid transparent;
+  background: var(--color-white);
+  box-shadow: var(--shadow-soft);
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.sample-tile img { width: 100%; height: 100%; object-fit: cover; }
+.sample-tile.selected { border-color: var(--color-leaf); transform: translateY(-2px); }
+.sample-tile-check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--color-leaf);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all 0.15s ease;
+}
+.sample-tile.selected .sample-tile-check { opacity: 1; transform: scale(1); }
+.sample-tile-select-btn {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 8px;
+  background: rgba(43,36,32,0.72);
+  color: var(--color-white);
+  font-size: 0.78rem;
+  text-align: center;
+  border: none;
+  font-weight: 500;
+  transform: translateY(100%);
+  transition: transform 0.15s ease;
+}
+.sample-tile:hover .sample-tile-select-btn,
+.sample-tile.selected .sample-tile-select-btn { transform: translateY(0); }
+
+.selected-product-summary {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 28px;
+}
+.selected-product-summary img { width: 76px; height: 76px; border-radius: 10px; object-fit: cover; }

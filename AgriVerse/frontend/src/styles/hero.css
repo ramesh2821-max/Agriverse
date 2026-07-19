@@ -1,0 +1,109 @@
+/* ============================================================
+   Hero - the signature moment: a burlap sack spilling grain.
+   Video is muted-off/paused on load (first frame visible per
+   spec), plays with sound on hover/tap, and an ambient CSS
+   grain-fall animation runs behind it at all times so the hero
+   never feels static.
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: linear-gradient(180deg, #3A2A18 0%, #5C3D22 55%, #7A5230 100%);
+  color: var(--color-white);
+}
+
+.hero-video-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-video-layer video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+  transition: opacity 0.5s ease, transform 6s ease;
+}
+.hero:hover .hero-video-layer video { opacity: 0.85; transform: scale(1.03); }
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(43,36,32,0.15) 0%, rgba(43,36,32,0.55) 75%, rgba(43,36,32,0.85) 100%);
+}
+
+/* Ambient falling-grain particles (pure CSS, always running) */
+.grain-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.grain-particle {
+  position: absolute;
+  top: -5%;
+  width: 6px;
+  height: 10px;
+  border-radius: 50% 50% 50% 0;
+  background: var(--color-grain-light);
+  opacity: 0.75;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  100% { transform: translateY(110vh) rotate(220deg); opacity: 0; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px 88px;
+  width: 100%;
+}
+.hero-content-inner { max-width: 1180px; margin: 0 auto; }
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  color: var(--color-grain-light);
+  margin-bottom: 18px;
+}
+
+.hero-title {
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  color: var(--color-white);
+  max-width: 780px;
+  margin-bottom: 18px;
+}
+.hero-title em { color: var(--color-grain-light); font-style: normal; }
+
+.hero-sub {
+  font-size: 1.1rem;
+  max-width: 520px;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 32px;
+}
+
+.hero-cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 40px;}
+.hero-hint { font-family: var(--font-mono); font-size: 0.78rem; color: rgba(255,255,255,0.55); }
+
+.hero-stats {
+  display: flex;
+  gap: 36px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  padding-top: 24px;
+}
+.hero-stat-num { font-family: var(--font-display); font-size: 1.7rem; color: var(--color-grain-light); }
+.hero-stat-label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.65); }
+
+@media (max-width: 720px) {
+  .hero { min-height: 82vh; align-items: flex-end; }
+  .hero-content { padding-bottom: 56px; }
+}

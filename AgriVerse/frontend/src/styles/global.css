@@ -1,0 +1,170 @@
+/* ============================================================
+   AgriVerse Design Tokens
+   Palette born from the harvest: burlap sacks, dried paddy husk,
+   deep leaf green, and the gold of winnowed grain.
+   ============================================================ */
+:root {
+  /* Color */
+  --color-husk: #F3ECDD;        /* page background - husk cream */
+  --color-husk-deep: #E7DCC3;   /* secondary surface */
+  --color-soil: #2B2420;        /* primary text - dark roasted soil */
+  --color-sack: #5C3D22;        /* burlap sack brown - navbar, headings */
+  --color-sack-dark: #402A17;
+  --color-leaf: #445E33;        /* paddy leaf green - primary actions */
+  --color-leaf-dark: #33481F;
+  --color-grain: #D9A441;       /* harvest gold - accents, highlights */
+  --color-grain-light: #F1C766;
+  --color-clay: #A6431F;        /* terracotta clay - alerts / secondary accent */
+  --color-white: #FFFDF8;
+  --color-line: rgba(43, 36, 32, 0.14);
+
+  /* Type */
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Work Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Radius / shadow */
+  --radius-card: 14px;
+  --shadow-soft: 0 8px 24px rgba(43, 36, 32, 0.10);
+  --shadow-lift: 0 14px 34px rgba(43, 36, 32, 0.16);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--color-husk);
+  color: var(--color-soil);
+  font-family: var(--font-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-sack-dark);
+  margin: 0 0 0.5em;
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+p { margin: 0 0 1em; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: var(--font-body); cursor: pointer; }
+
+:focus-visible {
+  outline: 3px solid var(--color-grain);
+  outline-offset: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  color: var(--color-leaf-dark);
+  font-weight: 500;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 999px;
+  padding: 13px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+.btn-primary {
+  background: var(--color-leaf);
+  color: var(--color-white);
+  box-shadow: var(--shadow-soft);
+}
+.btn-primary:hover:not(:disabled) { background: var(--color-leaf-dark); box-shadow: var(--shadow-lift); }
+
+.btn-gold {
+  background: var(--color-grain);
+  color: var(--color-sack-dark);
+  box-shadow: var(--shadow-soft);
+}
+.btn-gold:hover:not(:disabled) { background: var(--color-grain-light); box-shadow: var(--shadow-lift); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-sack);
+  border: 1.5px solid var(--color-sack);
+}
+.btn-outline:hover:not(:disabled) { background: var(--color-sack); color: var(--color-white); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-sack);
+  padding: 10px 16px;
+}
+.btn-ghost:hover:not(:disabled) { background: var(--color-husk-deep); }
+
+.btn-danger {
+  background: var(--color-clay);
+  color: var(--color-white);
+}
+
+.page-section {
+  padding: 64px 0;
+}
+
+.section-heading {
+  max-width: 640px;
+  margin-bottom: 36px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--color-husk-deep);
+  color: var(--color-sack-dark);
+}
+
+.state-message {
+  text-align: center;
+  padding: 80px 24px;
+  color: var(--color-sack);
+}
+.state-message h3 { margin-bottom: 8px; }
+
+.breadcrumb-trail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-sack);
+  margin-bottom: 28px;
+}
+.breadcrumb-trail a { color: var(--color-leaf-dark); }
+.breadcrumb-trail a:hover { text-decoration: underline; }
+.breadcrumb-trail .sep { opacity: 0.4; }
+
+@media (max-width: 720px) {
+  .page-section { padding: 44px 0; }
+}

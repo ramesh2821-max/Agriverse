@@ -6,11 +6,12 @@ const Product = require("../models/Product");
 //        of a category flow. Any of variety/age can be omitted for
 //        categories that don't use them.
 const getProducts = async (req, res) => {
-  const { category, variety, age } = req.query;
+  const { category, variety, age, quality } = req.query;
   const filter = {};
   if (category) filter.category = category;
   if (variety) filter.variety = variety;
   if (age) filter.age = age;
+  if (quality) filter.quality = quality;
 
   const products = await Product.find(filter).sort({ price: 1 });
   res.json(products);
